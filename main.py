@@ -1,26 +1,28 @@
+#check_sum_consecutive
+
 def solution(a, m, k):
     checking=len(a)-m
-    temp_four=[]
+    temp_consec=[]
     counter=0
     for i in a[0:checking+1]:
         index = a.index(i)
         
-        temp_four.extend(a[index:index+(m)])
+        temp_consec.extend(a[index:index+(m)])
 
         displayed_matches=[]
         matches=[]
-        for x in temp_four:
+        for x in temp_consec:
             
-            index = temp_four.index(x)
-            for i in range(len(temp_four)-1):
+            index = temp_consec.index(x)
+            for i in range(len(temp_consec)-1):
                 
                 
-                if (x + temp_four[i] == 10) and (i != index) and ((index, i) not in matches):
+                if (x + temp_consec[i] == 10) and (i != index) and ((index, i) not in matches):
                     matches.append((index, i))
-                    displayed_matches.append((temp_four[index], temp_four[i]))
+                    displayed_matches.append((temp_consec[index], temp_consec[i]))
                     counter=counter+1
 
-        print(temp_four)
+        print(temp_consec)
         if len(displayed_matches) != 0:
             
             print(displayed_matches)
@@ -28,7 +30,7 @@ def solution(a, m, k):
         else:
             print("\n")
             
-        temp_four=[]
+        temp_consec=[]
         
     print("There are " + str(counter) + " total pairs.")
     return counter
